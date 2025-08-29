@@ -22,13 +22,13 @@ pipeline {
                 }
             }
             environment {
-                AWS_S3_BUCKET = 'www.robdavisjr.com'
+                AWS_S3_BUCKET = 'rdj-website-202508142156'
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'my-aws-s3', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
                     sh '''
                         aws --version
-                        aws s3 cp templates/index.html s3://$AWS_S3_BUCKET/index.html
+                        aws s3 cp index.html s3://$AWS_S3_BUCKET/index.html
                         aws s3 sync static s3://$AWS_S3_BUCKET
                     '''
                 }

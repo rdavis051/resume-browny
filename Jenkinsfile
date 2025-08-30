@@ -29,7 +29,7 @@ pipeline {
                     sh '''
                         aws --version
                         aws s3 cp templates/index.html s3://$AWS_S3_BUCKET/index.html
-                        aws s3 sync static s3://$AWS_S3_BUCKET
+                        aws s3 sync static s3://$AWS_S3_BUCKET/static
                     '''
                 }
             }
